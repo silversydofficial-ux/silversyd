@@ -1,0 +1,141 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@js(/layout/basic/js/main.js)-->
+<!--@css(/layout/basic/css/main.css)-->
+<!--@import(/smart-banner/shop1/smart-banner-admin-RES00001.html)-->
+<section class="section main_product_slide" data-ez-module="product-list-slide/2" data-ez-layout="grid5_slide" data-ez="contents-1gudxm4-1">
+	<ez-prop data-version="1.0.0" type="layout">
+		<ez-var data-prop="layout" data-namespace="ez.module.product-list-slide.layout" data-type="array">
+			<ez-item data-id="grid3_slide" data-name="일반3단형(PC 3열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid4_slide" data-name="일반4단형(PC 4열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid5_slide" data-name="일반5단형(PC 5열/MOBILE 3열)"></ez-item>
+			<ez-item data-id="grid3_slide list_gallery" data-name="이미지강조3단형(PC 3열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid4_slide list_gallery" data-name="이미지강조4단형(PC 4열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid5_slide list_gallery" data-name="이미지강조5단형(PC 5열/MOBILE 3열)"></ez-item>
+		</ez-var>
+	</ez-prop>
+
+	<div class="main_title ez-align-left" data-ez-role="ez-align" data-ez-align="left"><!-- 온라인 타이틀 수정하는곳 -->
+		<div class="main_title_txt01" data-ez-role="title">BEST SELLERS</div>
+		<div class="main_title_txt02" data-ez-role="subtitle">베스트 상품</div>
+	</div><!-- //main_title -->
+
+	<div data-ez-holder="product_listmain">
+		<div module="product_listmain_2" class="ec-base-product swiper-container special_slide">
+			<ul class="swiper-wrapper prdList ez-discount-tag-off grid5_slide" data-ez-role="layout ez-discount-tag" data-ez-discount-tag="off">
+				<!--@import(/product/list_product_slide.html)-->
+			</ul>
+			<div class="swiper-scrollbar"></div>
+		</div>
+	</div>
+	<div class="swiper-button-prev swiper-button-prev-special_slide"></div>
+	<div class="swiper-button-next swiper-button-next-special_slide"></div>
+</section>
+<section class="section main_product_list" data-ez-module="product-list/1" data-ez-layout="grid4" data-ez="contents-1tk61zi-1">
+	<ez-prop data-version="1.0.0" type="layout">
+		<ez-var data-prop="layout" data-namespace="ez.module.product-list.layout" data-type="array">
+			<ez-item data-id="grid3" data-name="일반3단형(PC 3열/MOBILE 1열)"></ez-item>
+			<ez-item data-id="grid4" data-name="일반4단형(PC 4열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid5" data-name="일반5단형(PC 5열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid3 list_gallery" data-name="이미지강조3단형(PC 3열/MOBILE 1열)"></ez-item>
+			<ez-item data-id="grid4 list_gallery" data-name="이미지강조4단형(PC 4열/MOBILE 2열)"></ez-item>
+			<ez-item data-id="grid5 list_gallery" data-name="이미지강조5단형(PC 5열/MOBILE 2열)"></ez-item>
+		</ez-var>
+	</ez-prop>
+	<div class="main_title ez-align-left" data-ez-role="ez-align" data-ez-align="left"><!-- 메인 새로운신상품 타이틀 수정하는곳 -->
+		<div class="main_title_txt01" data-ez-role="title">ALL</div>
+		<div class="main_title_txt02" data-ez-role="subtitle">실버시드 모든 상품 보기</div>
+	</div><!-- //main_title -->
+	<div data-ez-holder="product_listmain">
+		<div module="product_listmain_1" class="ec-base-product">
+			<!--
+				$count = 12
+				$basket_result = /product/add_basket.html
+				$basket_option = /product/basket_option.html
+				$moreview = no
+				$cache = yes
+			-->
+			<ul class="prdList grid4 ez-discount-tag-off" data-ez-role="layout ez-discount-tag" data-ez-discount-tag="off">
+				<!--@import(/product/list_product.html)-->
+			</ul>
+		</div>
+		<div module="product_listmore_1" class="more">
+			<a href="#none" onclick="{$more_action}" class="btnMore">
+				상품 더보기<div>(<span id="more_current_page_{$display_group}">{$current_page}</span>/<span id="more_total_page_{$display_group}">{$total_page}</span>)</div>
+			</a>
+		</div>
+	</div>
+</section>
+<section class="section main_image_text_gallery" data-ez-module="image-gallery/2" data-ez-role="style.background" data-ez-item-length="3" data-ez="contents-1tqf9m5-1" style="margin-bottom: 83px; display: none;" data-ez-display="hidden">
+	<ez-prop data-version="1.0.0" type="layout">
+		<ez-var data-prop="image" data-namespace="ez.module.image-gallery.image">
+			<ez-item data-id="size" data-pc="396 240" data-mobile="396 240"></ez-item>
+		</ez-var>
+		<ez-var data-prop="display" data-namespace="ez.module.image-gallery.display">
+			<ez-item data-id="item" data-max="10"></ez-item>
+			<ez-item data-id="column" data-default="3" data-min="1" data-max="5"></ez-item>
+		</ez-var>
+		<ez-var data-prop="layout" data-namespace="ez.module.image-gallery.layout">
+			<ez-item data-id="mobile" data-default="slide">
+				<ez-item data-id="options" data-type="array">
+					<ez-item data-id="slide" data-name="슬라이드"></ez-item>
+					<ez-item data-id="more" data-name="더보기"></ez-item>
+					<ez-item data-id="none" data-name="사용안함"></ez-item>
+				</ez-item>
+			</ez-item>
+		</ez-var>
+	</ez-prop>
+
+	<div class="main_title ez-align-center" data-ez-role="ez-align" data-ez-align="center"><!-- 온스토리 타이틀 수정하는곳 -->
+		<div class="main_title_txt01" data-ez-role="title">silversyd</div>
+		<div class="main_title_txt02" data-ez-role="desc">실버시드의 BEST ITEM을 만나보세요</div>
+	</div><!-- //main_title -->
+
+    <div class="main_3dan_banner ez-mobile-layout-slide" data-ez-role="ez-mobile-layout" data-ez-mobile-layout="slide"><!-- 메인 3단배너 수정하는곳 -->
+         <ul data-ez-role="image-list ez-column" class="ez-column-3" data-ez-column="3"><li data-ez-role="image-item ez-align">
+				<a data-ez-role="a" href="#" target="_self">
+					<picture>
+						<source srcset="/shop1/skin-base/SkinImg/img/main_banner01_pc.jpg" media="(max-width: 1024px)" data-ez-role="img-pc" data-ez-eb>
+						<img src="/shop1/skin-base/SkinImg/img/main_banner01_pc.jpg" data-ez-role="img-mobile" loading="lazy">
+					</picture>
+					<div class="main_banner_txt">
+						<div class="main_banner_txt01" data-ez-role="title" style="color: rgb(58, 58, 58);">스킨 세럼 파운데이션</div>
+						<div class="main_banner_more" data-ez-role="desc" style="color: rgb(154, 154, 154);">자세히 살펴보기</div>
+					</div><!--//main_banner_txt-->
+				</a>
+            </li><li data-ez-role="image-item ez-align">
+				<a data-ez-role="a" href="#" target="_self">
+					<picture>
+						<source srcset="/shop1/skin-base/SkinImg/img/main_banner02_pc.jpg" media="(max-width: 1024px)" data-ez-role="img-pc" data-ez-eb>
+						<img src="/shop1/skin-base/SkinImg/img/main_banner02_pc.jpg" data-ez-role="img-mobile" loading="lazy">
+					</picture>
+					<div class="main_banner_txt">
+						<div class="main_banner_txt01" data-ez-role="title" style="color: rgb(58, 58, 58);">웨이트리스 스킨 세럼</div>
+						<div class="main_banner_more" data-ez-role="desc" style="color: rgb(51, 51, 51);">자세히 살펴보기</div>
+					</div><!--//main_banner_txt-->
+				</a>
+            </li><li data-ez-role="image-item ez-align">
+				<a data-ez-role="a" href="#" target="_self">
+					<picture>
+						<source srcset="/shop1/skin-base/SkinImg/img/main_banner03_pc.jpg" media="(max-width: 1024px)" data-ez-role="img-pc" data-ez-eb>
+						<img src="/shop1/skin-base/SkinImg/img/main_banner03_pc.jpg" data-ez-role="img-mobile" loading="lazy">
+					</picture>
+					<div class="main_banner_txt">
+						<div class="main_banner_txt01" data-ez-role="title" style="color: rgb(58, 58, 58);">UV 베이비 에센스 SPF35</div>
+						<div class="main_banner_more" data-ez-role="desc" style="color: rgb(154, 154, 154);">자세히 살펴보기</div>
+					</div><!--//main_banner_txt-->
+				</a>
+            </li></ul>
+		<div class="main_image_text_gallery_more"><a href="#none" class="main_image_text_gallery_more_btn">더보기</a></div>
+	</div><!-- //main_3dan_banner -->
+</section>
+<!--@import(/smart-banner/shop1/smart-banner-admin-RES00002.html)-->
+<section class="section main_video ez-align-center" data-ez-align="center" data-ez-module="video/1" data-ez-role="style.background" data-ez="contents-1612l13-1" data-ez-display="hidden" style="display: none;">
+	<div class="main_title">
+		<div class="main_title_txt01" data-ez-role="title">짐웨어의 새로운 시대를 여는 실버시드 </div>
+		<div class="main_title_txt02" data-ez-role="desc">Support Your Dream</div>
+	</div><!-- //main_title -->
+
+	<div class="main_video_box"><iframe data-ez-role="video" id="ytplayer" type="text/html" src="https://m-img.cafe24.com/images/ec/sde/video/ouui_1920x1080.mp4" frameborder="0" allowfullscreen data-ez-rawsrc="https://m-img.cafe24.com/images/ec/sde/video/ouui_1920x1080.mp4" loading="lazy"></iframe></div>
+</section>
+<!--@define(cmc_log)-->
+<!--#ez="1/14"-->
