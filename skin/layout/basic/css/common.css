@@ -647,32 +647,30 @@ font-size:calc([min size] + ([max size] - [min size]) * ((100vw - [min width]) /
 }
 
 /* ============================================
-   CUSTOM: 헤더 상시 고정(fixed) + 투명 배경
-   요청: carmid.kr 레퍼런스처럼 헤더 위치는 고정하되 배경은 투명하게,
-   스크롤 시에는 기존 .fixed 토글(layout.js)을 그대로 재사용해 불투명 전환.
-   -> JS 수정 없이 CSS만으로 적용됨.
+   CUSTOM: 헤더 상시 고정(fixed)
+   - 기본(페이지 최상단) = 흰 배경
+   - 스크롤 시(.fixed, 기존 layout.js 토글 재사용) = 배경 완전 투명
+     블러/그림자 등 효과 없음. position:fixed + z-index로
+     콘텐츠보다 항상 앞에 오도록만 처리.
+   -> JS 수정 없이 CSS만으로 적용됨 (헤더 높이 보정 스크립트만 layout.html에 별도 추가).
    ============================================ */
 #header {
 	position: fixed !important;
 	top: 0;
 	left: 0;
 	right: 0;
-	background: transparent !important;
-	border-bottom-color: transparent !important;
+	background: #fff !important;
+	border-bottom-color: #e8e8e8 !important;
 	transition: background-color .3s ease, border-color .3s ease;
 }
 #header.fixed {
-	background: #fff !important;
-	border-bottom: 1px solid #e8e8e8 !important;
+	background: transparent !important;
+	border-bottom-color: transparent !important;
 }
 
-/* 헤더가 문서 흐름에서 빠지며 생기는 공백만큼 본문을 아래로 밀어내기 */
-/* 실제 헤더 높이는 브라우저에서 눈으로 확인 후 정확히 맞춰야 함 (추정치) */
+/* 헤더가 문서 흐름에서 빠지며 생기는 공백만큼 본문을 아래로 밀어내기.
+   고정 px 대신 layout.html에 추가한 스크립트가 헤더 실측 높이를
+   --header-h 로 계산해 넣어준다 (화면폭/줄바꿈이 바뀌어도 안전). */
 #container {
-	padding-top: 140px; /* PC: toparea(약 60px) + top_nav_box(약 80px) */
-}
-@media all and (max-width:1024px) {
-	#container {
-		padding-top: 65px; /* 태블릿/모바일: top_nav_box 높이(65px) */
-	}
+	padding-top: var(--header-h, 140px);
 }

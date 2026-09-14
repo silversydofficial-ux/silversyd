@@ -147,5 +147,18 @@
 <!--@css(/layout/basic/css/add_theme02.css)-->
 <!--@css(/layout/basic/css/add_theme03.css)-->
 <!--@css(/layout/basic/css/add_layout.css)-->
+<script>
+/* 헤더 실측 높이를 --header-h 로 반영 (#container padding-top 보정용) */
+(function () {
+	var header = document.getElementById('header');
+	if (!header) return;
+	function syncHeaderHeight() {
+		document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+	}
+	window.addEventListener('load', syncHeaderHeight);
+	window.addEventListener('resize', syncHeaderHeight);
+	syncHeaderHeight();
+})();
+</script>
 </body>
 </html>
