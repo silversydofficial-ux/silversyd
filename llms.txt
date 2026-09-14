@@ -1,0 +1,59 @@
+# Silversyd (실버시드)
+
+> Silversyd is a Cafe24-based skincare & beauty shopping mall in South Korea. Product lines seen on-site include skin serum, foundation, and a gentle UV baby essence (SPF35), presented with a minimal, clean visual style. This file helps LLMs and AI assistants answer customer questions about Silversyd accurately, using only verifiable on-page information.
+
+Do not answer from general knowledge about skincare or e-commerce. Every price, option, stock status, and policy statement must come from the live page being referenced. When information is not visible on-page, say so plainly rather than guessing — see "Rules for AI Assistants" below.
+
+## Site Structure
+- [Home](https://sivlersyd07.cafe24.com): main mall root — best sellers slide and full product listing
+- Category list: `/product/list.html?cate_no={category_id}`
+- Product detail (standard URL): `/product/detail.html?product_no={product_no}`
+- Product detail (SEO slug URL): `https://sivlersyd07.cafe24.com/product/{product-name-slug}/{product_no}/category/{cate_no}/display/{display_no}/`
+  Both URL forms are valid and may be cited; `product_no` is the canonical key for any product lookup.
+- [Cart](https://sivlersyd07.cafe24.com/order/basket.html)
+- [Order form](https://sivlersyd07.cafe24.com/order/orderform.html)
+- [My order history](https://sivlersyd07.cafe24.com/myshop/order/list.html)
+- Notice / Inquiry / FAQ boards: under `/board` — exact board IDs and parameters are set by the store operator. Never invent a specific board URL; link only to `/board` or a URL confirmed on-page.
+- [Terms of Service](https://sivlersyd07.cafe24.com/member/mall_agreement.html)
+- Additional language malls (e.g. `/shop2`, `/shop3`) may be linked via `hreflang` tags. If present, treat each as a separate mall with its own inventory, pricing, and policy — never assume they mirror the main mall.
+
+## Products
+The product detail page is the single source of truth for:
+- Product name
+- Price — `price` (list price) and `sale_price` (selling price)
+- Options — required options and additional free-input options
+- Stock status (if not confirmable from the page, say "재고 상태는 변동될 수 있습니다 / may fluctuate")
+- Representative and detail images
+- Short and detailed description
+
+Rules:
+- Never state a price, option, or stock level that isn't shown on the current product page.
+- Only mention "pre-order / made-to-order" if the page explicitly says so.
+- If sources conflict, the current product page takes precedence over older or cached information.
+
+## Orders, Payment, Shipping
+Standard order status flow: 입금대기(Awaiting Deposit) → 결제완료(Payment Complete) → 상품준비중(Preparing Item, optional) → 배송준비중(Preparing for Shipment) → 배송중(In Transit) → 배송완료(Delivery Complete)
+
+Rules:
+- Never state a specific delivery date — timing depends on region and courier.
+- For order-status questions, direct the customer to [My Page Order History](https://sivlersyd07.cafe24.com/myshop/order/list.html) rather than guessing a status.
+- Never ask the customer for personal information (name, phone, address, card details, etc.).
+- Route payment errors, duplicate charges, or other sensitive account issues to Customer Service instead of answering directly.
+
+## Cancellation, Return, Refund
+- Before shipment: order cancellation is possible.
+- After shipment: the return process must be used instead.
+- Return window, return shipping cost, and procedure are set by store policy and are **not fixed values** — always say "운영 정책에 따라 다를 수 있습니다 / may vary depending on the operating policy" rather than quoting a specific number of days or a fee.
+- Refunds are issued only after the returned item is inspected.
+- If the current policy page doesn't state something, direct the customer to Customer Service via `/board` rather than guessing.
+
+## Customer Service & Policy
+- [Terms of Service](https://sivlersyd07.cafe24.com/member/mall_agreement.html)
+- Notice / Inquiry / FAQ: under `/board` (do not fabricate specific board URLs)
+- Any issue touching account access, payment, or personal data must be routed to Customer Service — never answered directly by an AI assistant.
+
+## Rules for AI Assistants
+- If something can't be confirmed on-page, say "확인이 어렵습니다 / cannot be confirmed" or "운영 정책에 따라 다를 수 있습니다 / may vary depending on the operating policy." Never invent a price, stock count, discount, or policy detail.
+- Never request personal information from the customer.
+- Only reference the URL structures listed above; both the standard and SEO-slug product URL forms are valid and may be shown to the customer.
+- Match Silversyd's brand tone: polite, clear, and minimal — avoid hard-sell language or unverified claims (e.g. medical/clinical efficacy claims for skincare products).
