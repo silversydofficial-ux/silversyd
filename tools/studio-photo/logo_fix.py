@@ -18,18 +18,18 @@ im = Image.open(src).convert("RGB")
 
 # 1) erase old logo: mask only the bright print pixels inside the box and fill them from
 #    the surrounding fabric (normalized blur), so no rectangular patch edge is left
-pad = 6
+pad = 2  # keep the box inside the fabric: backdrop pixels in the box would be filled dark
 bx0, by0, bx1, by1 = x0 - pad, y0 - pad, x1 + pad, y1 + pad
 arr = np.asarray(im).astype(np.float32)
 reg = arr[by0 - 20:by1 + 20, bx0 - 20:bx1 + 20]
 lum = reg.mean(axis=2)
 hole = np.zeros(lum.shape, bool)
-hole[20:-20, 20:-20] = lum[20:-20, 20:-20] > 60
-hole = np.asarray(Image.fromarray(hole.astype(np.uint8) * 255).filter(ImageFilter.MaxFilter(5))) > 0
+hole[20:-20, 20:-20] = lum[20:-20, 20:-20] > np.median(lum) + 20
+hole = np.asarray(Image.fromarray(hole.astype(np.uint8) * 255).filter(ImageFilter.MaxFilter(7))) > 0
 known = (~hole).astype(np.float32)
 filled = reg.copy()
 for r in (3, 6, 12):
-    num = np.stack([np.asarray(Image.fromarray(np.clip(reg[..., c] * known, 0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(r))).astype(np.float32) for c in range(3)], axis=2)
+    num = np.stack([np.asarray(Image.fromarray(np.clip(filled[..., c] * known, 0, 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(r))).astype(np.float32) for c in range(3)], axis=2)
     den = np.asarray(Image.fromarray((known * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(r))).astype(np.float32)[..., None] / 255
     est = num / np.maximum(den, 1e-3)
     todo = hole & (den[..., 0] > 0.05)
