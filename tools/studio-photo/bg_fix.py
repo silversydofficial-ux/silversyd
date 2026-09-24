@@ -1,6 +1,6 @@
 """Re-tone a studio backdrop to neutral #F7F7F7 while keeping the subject, floor shadow and hair edges.
 
-usage: python3 bg_fix.py original.png cutout.png out.png [target=247] [gamma=0.3]
+usage: python3 bg_fix.py original.png cutout.png out.png [target=247] [gamma=0.3] [erode=3]
   cutout.png = same image with transparent background (alpha = subject mask)
 """
 import sys
@@ -10,10 +10,11 @@ from PIL import Image, ImageFilter
 src, cut, dst = sys.argv[1:4]
 target = float(sys.argv[4]) if len(sys.argv) > 4 else 247.0
 gamma = float(sys.argv[5]) if len(sys.argv) > 5 else 0.3
+erode = int(sys.argv[6]) if len(sys.argv) > 6 else 3  # odd px; raise to 5 if a light halo shows
 
 img = np.asarray(Image.open(src).convert("RGB")).astype(np.float32)
 mask_img = Image.open(cut).convert("RGBA").split()[3].resize(Image.open(src).size, Image.LANCZOS)
-a = np.asarray(mask_img.filter(ImageFilter.MinFilter(3)).filter(ImageFilter.GaussianBlur(1.0))).astype(np.float32)[..., None] / 255.0
+a = np.asarray(mask_img.filter(ImageFilter.MinFilter(erode)).filter(ImageFilter.GaussianBlur(1.0))).astype(np.float32)[..., None] / 255.0
 
 # old backdrop: luminance, smoothed, with the subject region filled from surrounding backdrop
 lum = img.mean(axis=2)
