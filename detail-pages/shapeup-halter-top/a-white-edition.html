@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shape Up Halter — White Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* WHITE EDITION — editorial minimal.
+   Layout: one narrow reading column (max 960) on pure white. Photography runs full-bleed,
+   type sits in wide, expanded caps. The only colour on the page is the garment. */
+.sy{
+  --paper:#FFFFFF;
+  --ink:#0A0A0A;
+  --ink-2:#4A4A4C;   /* body copy */
+  --ink-3:#8E8E92;   /* captions, struck-through problems */
+  --rule:#E6E6E8;
+  --mist:#F5F5F6;    /* the one tinted band */
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+html,body{margin:0;background:#FFFFFF}
+.sy,.sy *,.sy *::before,.sy *::after{box-sizing:border-box}
+.sy{max-width:960px;margin:0 auto;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:15px;line-height:1.8;word-break:keep-all;overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased}
+.sy img{display:block;width:100%;height:auto;max-width:100%}
+.sy h1,.sy h2,.sy h3,.sy p,.sy ul,.sy ol,.sy dl,.sy dd,.sy figure{margin:0;padding:0}
+.sy ul,.sy ol{list-style:none}
+
+/* type */
+.en{font-family:var(--display);font-stretch:125%;font-weight:600;text-transform:uppercase;
+  letter-spacing:.01em;line-height:1.02;text-wrap:balance}
+.en--xl{font-size:clamp(34px,7.4vw,68px)}
+.en--l{font-size:clamp(26px,5vw,44px)}
+.en--m{font-size:clamp(17px,2.6vw,22px);letter-spacing:.02em}
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--display);font-stretch:100%;
+  font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
+.eyebrow::after{content:"";flex:0 0 32px;height:1px;background:currentColor}
+.ko-h{font-size:clamp(18px,2.6vw,22px);font-weight:700;line-height:1.5;letter-spacing:-.01em;text-wrap:balance}
+.body{color:var(--ink-2);max-width:34em}
+.cap{font-size:12px;color:var(--ink-3);line-height:1.6}
+
+/* frame */
+.sec{padding:clamp(72px,11vw,120px) clamp(20px,6vw,64px)}
+.sec + .sec{border-top:1px solid var(--rule)}
+.sec--mist{background:var(--mist);border-top:0!important}
+.stack{display:grid;gap:20px}
+.head{display:grid;gap:18px;margin-bottom:clamp(40px,6vw,64px)}
+.bleed{margin-inline:calc(-1 * clamp(20px,6vw,64px))}
+
+/* HERO */
+.hero{position:relative;background:var(--mist)}
+.hero__img{aspect-ratio:4/5;overflow:hidden}
+.hero__img img{height:100%;object-fit:cover;object-position:50% 20%}
+.hero__bar{display:flex;justify-content:space-between;align-items:center;padding:18px clamp(20px,6vw,64px);
+  border-bottom:1px solid var(--rule);background:var(--paper)}
+.hero__bar img{width:120px}
+.hero__bar span{font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.22em;color:var(--ink-3)}
+.hero__txt{padding:clamp(40px,7vw,72px) clamp(20px,6vw,64px) 0;display:grid;gap:22px;background:var(--paper)}
+.hero__name{font-size:15px;font-weight:500;color:var(--ink-2)}
+.hero__facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink);margin-top:14px}
+.hero__facts div{padding:16px 0 0;display:grid;gap:4px}
+.hero__facts dt{font-family:var(--display);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);text-transform:uppercase}
+.hero__facts dd{font-size:13px;font-weight:500}
+@media (max-width:560px){.hero__facts{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:8px}}
+
+/* PROBLEM */
+.prob{display:grid;gap:0;border-top:1px solid var(--ink)}
+.prob li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;padding:26px 0;border-bottom:1px solid var(--rule)}
+.prob .n{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--ink-3);padding-top:4px}
+.prob strong{display:block;font-size:17px;font-weight:700;color:var(--ink-3);text-decoration:line-through;text-decoration-thickness:1px}
+.prob p{margin-top:6px;color:var(--ink-2)}
+.turn{margin-top:clamp(40px,6vw,56px);font-size:clamp(19px,2.8vw,24px);font-weight:700;line-height:1.55;text-wrap:balance}
+
+/* FIX — alternating editorial rows */
+.fix{display:grid;gap:clamp(56px,9vw,96px)}
+.fix__row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:center}
+.fix__row:nth-child(even) .fix__img{order:2}
+.fix__img{aspect-ratio:3/4;overflow:hidden;background:var(--mist)}
+.fix__img img{height:100%;object-fit:cover}
+.fix__txt{display:grid;gap:14px}
+.fix__k{font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.22em;color:var(--ink-3)}
+.fix__was{font-size:13px;color:var(--ink-3)}
+.fix__was s{text-decoration-thickness:1px}
+@media (max-width:640px){.fix__row{grid-template-columns:1fr}.fix__row:nth-child(even) .fix__img{order:0}}
+
+/* SIGNATURE */
+.sig{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:end}
+.sig__pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sig__pair figure{aspect-ratio:3/4;overflow:hidden;background:var(--mist)}
+.sig__pair img{height:100%;object-fit:cover}
+@media (max-width:640px){.sig{grid-template-columns:1fr}}
+
+/* FABRIC */
+.spec{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);margin-top:40px}
+.spec div{padding:22px 16px 22px 0;display:grid;gap:6px;align-content:start}
+.spec div + div{padding-left:16px;border-left:1px solid var(--rule)}
+.spec b{font-family:var(--display);font-stretch:125%;font-size:clamp(20px,3vw,28px);font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.spec span{font-size:12px;color:var(--ink-3)}
+@media (max-width:640px){.spec{grid-template-columns:repeat(2,minmax(0,1fr))}.spec div:nth-child(3){padding-left:0;border-left:0}.spec div:nth-child(n+3){border-top:1px solid var(--rule)}}
+.zoom{display:grid;grid-template-columns:2fr 1fr;gap:8px;margin-top:40px}
+.zoom figure{overflow:hidden;background:var(--mist)}
+.zoom figure:first-child{grid-row:span 2}
+.zoom img{height:100%;object-fit:cover}
+
+/* COLOUR */
+.colors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.colors figure{display:grid;gap:12px}
+.colors .sw{aspect-ratio:3/4;overflow:hidden}
+.colors .sw img{height:100%;object-fit:cover}
+.colors figcaption{display:grid;gap:2px}
+.colors figcaption b{font-family:var(--display);font-stretch:125%;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.colors figcaption span{font-size:12px;color:var(--ink-3)}
+@media (max-width:560px){.colors{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}}
+
+/* LOOKBOOK */
+.look{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.look figure{overflow:hidden;background:var(--mist)}
+.look img{height:100%;object-fit:cover}
+.look .a{grid-column:span 4;grid-row:span 2}
+.look .b,.look .c{grid-column:span 2}
+.look .d,.look .e,.look .f{grid-column:span 2;aspect-ratio:3/4}
+.look .w{grid-column:1/-1;aspect-ratio:16/9}
+
+/* UGC */
+.ugc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.ugc figure{aspect-ratio:3/4;overflow:hidden;background:var(--mist)}
+.ugc img{height:100%;object-fit:cover}
+@media (max-width:560px){.ugc{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* SET */
+.set{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:center}
+.set__img{aspect-ratio:4/5;overflow:hidden}
+.set__img img{height:100%;object-fit:cover;object-position:50% 40%}
+.price{border-top:1px solid var(--ink);margin-top:8px}
+.price div{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+.price dt{font-size:13px;color:var(--ink-2)}
+.price dd{font-size:14px;font-weight:500}
+.price .total dt{font-weight:700;color:var(--ink)}
+.price .total dd{font-family:var(--display);font-stretch:125%;font-size:20px;font-weight:600}
+.price .total dd small{font-family:var(--body);font-size:12px;font-weight:500;color:var(--ink-3);margin-right:10px;text-decoration:line-through}
+.save{display:inline-flex;align-self:start;justify-self:start;padding:6px 12px;border:1px solid var(--ink);font-size:12px;font-weight:700;letter-spacing:.02em}
+@media (max-width:640px){.set{grid-template-columns:1fr}}
+
+/* SIZE */
+.size{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,56px);align-items:center}
+@media (max-width:640px){.size{grid-template-columns:1fr}}
+.size svg{width:100%;height:auto}
+.tbl{overflow-x:auto}
+.sy table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.sy th,.sy td{padding:14px 8px;text-align:center;border-bottom:1px solid var(--rule);font-size:14px}
+.sy thead th{font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--ink-3);border-bottom:1px solid var(--ink)}
+.sy tbody th{text-align:left;font-weight:500}
+.sy tbody th i{font-style:normal;display:inline-grid;place-items:center;width:18px;height:18px;margin-right:8px;border-radius:50%;background:var(--ink);color:var(--paper);font-family:var(--display);font-size:10px;font-weight:700}
+.fit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:48px;padding-top:28px;border-top:1px solid var(--ink)}
+.fit dt{font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.22em;color:var(--ink-3);text-transform:uppercase;margin-bottom:8px}
+.fit dd{font-size:14px;color:var(--ink-2)}
+@media (max-width:640px){.fit{grid-template-columns:1fr}}
+.todo{background:#FFF3B0;color:#0A0A0A;padding:0 4px}
+
+/* FAQ */
+.faq{border-top:1px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--display);font-weight:300;font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq summary:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.faq details p{padding:0 0 22px;color:var(--ink-2);max-width:40em}
+
+/* CARE / INFO */
+.care{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.care li{display:grid;gap:10px;justify-items:center;text-align:center;padding:20px 8px;border:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink-2)}
+.care svg{width:34px;height:34px}
+@media (max-width:640px){.care{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.info{margin-top:48px;border-top:1px solid var(--ink)}
+.info div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:13px}
+.info dt{color:var(--ink-3)}
+.info dd{color:var(--ink-2)}
+
+/* BRAND */
+.brand{position:relative;background:var(--ink);color:var(--paper);overflow:hidden}
+.brand__img{aspect-ratio:21/9;overflow:hidden}
+.brand__img img{height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1)}
+.brand__in{padding:clamp(56px,9vw,96px) clamp(20px,6vw,64px);display:grid;gap:28px}
+.brand .eyebrow{color:#9A9AA0}
+.brand p{color:#C9C9CE;max-width:34em}
+.brand__sign{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:28px;border-top:1px solid #2A2A2D}
+.brand__sign img{width:140px}
+.brand__sign span{font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:.24em;color:#9A9AA0}
+</style>
+</head>
+<body>
+<main class="sy">
+
+<!-- ─────────── 0. HERO ─────────── -->
+<header class="hero">
+  <div class="hero__bar"><img src="img/silversyd-logo.svg" alt="SILVERSYD"><span>SHAPE UP SERIES — 001</span></div>
+  <div class="hero__img"><img src="img/hero-black-back.jpg" alt="블랙 쉐이프업 홀터넥 탑을 입은 모델의 뒷모습"></div>
+  <div class="hero__txt">
+    <p class="eyebrow">New Arrival</p>
+    <h1 class="en en--xl">Built to<br>show the work.</h1>
+    <p class="ko-h">운동으로 만든 등, 이제 가리지 마세요.</p>
+    <p class="hero__name">우먼 쉐이프업 홀터넥 탑</p>
+    <dl class="hero__facts">
+      <div><dt>Fabric</dt><dd>Nylon 90 / Span 10</dd></div>
+      <div><dt>Fit</dt><dd>Compression</dd></div>
+      <div><dt>Pad</dt><dd>Built-in</dd></div>
+      <div><dt>Size</dt><dd>S · M · L</dd></div>
+    </dl>
+  </div>
+</header>
+
+<!-- ─────────── 1. PROBLEM ─────────── -->
+<section class="sec">
+  <div class="head">
+    <p class="eyebrow">Between Sets</p>
+    <h2 class="en en--l">You came to train,<br>not to adjust.</h2>
+    <p class="body">세트 사이 1분. 숨을 고르는 대신 옷부터 매만지고 있진 않나요? 운동하는 여성이라면 한 번쯤 겪어 봤을 장면들이에요.</p>
+  </div>
+  <ol class="prob">
+    <li><span class="n">01</span><div><strong>팔을 올릴 때마다 패드가 떠요.</strong><p>오버헤드 프레스 한 번에 패드가 밀려나고, 손을 넣어 다시 맞추고, 다음 세트에서 또 반복하죠.</p></div></li>
+    <li><span class="n">02</span><div><strong>밑단이 자꾸 말려 올라가요.</strong><p>데드리프트로 상체를 숙일 때마다 밑단이 돌돌 말립니다. 집중이 끊기는 건 그 순간이에요.</p></div></li>
+    <li><span class="n">03</span><div><strong>등 운동을 했는데, 등이 안 보여요.</strong><p>랫풀다운 마지막 세트를 끝내고 거울을 봐도, 원단이 견갑과 광배를 덮고 있습니다.</p></div></li>
+  </ol>
+  <p class="turn">운동하는 시간은 옷이 아니라 몸에 써야 합니다.<br>그래서 이 세 가지부터 고쳤어요.</p>
+</section>
+
+<!-- ─────────── 2. THE FIX ─────────── -->
+<section class="sec">
+  <div class="head">
+    <p class="eyebrow">The Fix</p>
+    <h2 class="en en--l">Three fixes.<br>Zero adjusting.</h2>
+  </div>
+  <div class="fix">
+    <article class="fix__row">
+      <figure class="fix__img"><img src="img/detail-pad-burgundy.jpg" alt="밑단 밴드와 한 장으로 재봉된 내장 패드"></figure>
+      <div class="fix__txt">
+        <span class="fix__k">FIX 01 — LOCKED-IN PAD</span>
+        <h3 class="ko-h">패드가 뜨지 않도록,<br>밴드와 한 장으로 재봉했어요.</h3>
+        <p class="body">스포츠 브라 두께의 성형 패드를 컵 모양 그대로 넣고, 밑단 밴드와 함께 고정했습니다. 팔을 끝까지 뻗어도, 상체를 깊게 숙여도 패드는 제자리에 있어요. 세탁 후에도 접히거나 틀어지지 않습니다.</p>
+        <p class="fix__was"><s>세트마다 손 넣어 패드 고치기</s></p>
+      </div>
+    </article>
+    <article class="fix__row">
+      <figure class="fix__img"><img src="img/detail-hem-burgundy.jpg" alt="두 겹으로 마감한 넓은 밑단 밴드"></figure>
+      <div class="fix__txt">
+        <span class="fix__k">FIX 02 — THICK HEM BAND</span>
+        <h3 class="ko-h">밑단은 두 겹으로 접어<br>넓게 잡았습니다.</h3>
+        <p class="body">넓은 밴드가 복부를 면으로 감싸, 고중량 세트에서도 밀려 올라가지 않아요. 그렇다고 조이지는 않습니다. 호흡할 공간은 그대로 남겨 두었어요.</p>
+        <p class="fix__was"><s>데드리프트마다 말려 올라가는 밑단</s></p>
+      </div>
+    </article>
+    <article class="fix__row">
+      <figure class="fix__img"><img src="img/detail-back-burgundy.jpg" alt="등판이 열린 백리스 홀터넥 디자인"></figure>
+      <div class="fix__txt">
+        <span class="fix__k">FIX 03 — BACKLESS HALTER</span>
+        <h3 class="ko-h">등판은 전부 열었어요.<br>당신이 만든 등이니까요.</h3>
+        <p class="body">목 뒤로 넘기는 스트랩 하나로 상체를 지탱합니다. 어깨뼈 사이를 지나는 원단이 없어 견갑을 모을 때 걸리는 곳이 없고, 마지막 세트 직후 거울에서 광배를 바로 확인할 수 있어요.</p>
+        <p class="fix__was"><s>등 운동 후에도 가려진 등</s></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ─────────── 3. SIGNATURE ─────────── -->
+<section class="sec sec--mist">
+  <div class="sig">
+    <div class="stack">
+      <p class="eyebrow">Signature</p>
+      <h2 class="en en--l">No big logo.<br>Just structure.</h2>
+      <p class="body">가슴에서 허리로 흐르는 3D 절개선이 상체의 굴곡을 따라 라인을 세워 줍니다. 큰 로고를 얹는 대신 이 구조 자체를 실버시드의 표시로 두었어요. 로고는 밑단 한쪽에, 작게 하나만 넣었습니다.</p>
+    </div>
+    <div class="sig__pair">
+      <figure><img src="img/zoom-ruching.jpg" alt="가슴 중앙 셔링 디테일"></figure>
+      <figure><img src="img/zoom-logo-hem.jpg" alt="밑단 한쪽에 작게 들어간 로고"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── 4. FABRIC ─────────── -->
+<section class="sec">
+  <div class="head">
+    <p class="eyebrow">Fabric</p>
+    <h2 class="en en--l">Stretch that<br>comes back.</h2>
+    <p class="body">쫀쫀하게 늘어났다가 동작이 끝나면 곧바로 제자리로 돌아옵니다. 여러 번 입고 빨아도 밑단과 가슴 라인이 늘어진 채 남지 않아요. 밀도가 높아 스쿼트 바닥 지점에서도 비치지 않습니다.</p>
+  </div>
+  <div class="spec">
+    <div><b>90 / 10</b><span>나일론 / 스판덱스</span></div>
+    <div><b>4-WAY</b><span>사방 스트레치</span></div>
+    <div><b>OPAQUE</b><span>비침 없는 고밀도</span></div>
+    <div><b>RECOVERY</b><span>세탁 후 형태 유지</span></div>
+  </div>
+  <div class="zoom">
+    <figure><img src="img/flat-milkblue-stretch.jpg" alt="원단을 늘려 신축성을 보여주는 컷"></figure>
+    <figure><img src="img/zoom-fabric.jpg" alt="원단 조직 클로즈업"></figure>
+    <figure><img src="img/flat-milkblue-halter.jpg" alt="홀터 스트랩 연결부 마감"></figure>
+  </div>
+</section>
+
+<!-- ─────────── 5. COLOUR ─────────── -->
+<section class="sec">
+  <div class="head">
+    <p class="eyebrow">Colour</p>
+    <h2 class="en en--l">Four colours.<br>None of them shy.</h2>
+    <p class="body">늘 고르던 검정도 좋아요. 그래도 이번 한 번은 틀을 깨 보셔도 괜찮습니다.</p>
+  </div>
+  <div class="colors">
+    <figure><div class="sw"><img src="img/swatch-black.jpg" alt="블랙 원단"></div><figcaption><b>Black</b><span>가장 날카로운 기본</span></figcaption></figure>
+    <figure><div class="sw"><img src="img/swatch-charcoal.jpg" alt="차콜 원단"></div><figcaption><b>Charcoal</b><span>차갑고 단단한 그레이</span></figcaption></figure>
+    <figure><div class="sw"><img src="img/swatch-milkblue.jpg" alt="밀크 블루 원단"></div><figcaption><b>Milk Blue</b><span>쿨톤 조명 아래 가장 선명하게</span></figcaption></figure>
+    <figure><div class="sw"><img src="img/swatch-burgundy.jpg" alt="버건디 원단"></div><figcaption><b>Burgundy</b><span>깊고 대담한 레드</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- ─────────── 6. LOOKBOOK ─────────── -->
+<section class="sec">
+  <div class="head">
+    <p class="eyebrow">Lookbook</p>
+    <h2 class="en en--l">Gym to street.<br>Same piece.</h2>
+    <p class="body">운동할 때 입고, 끝나면 그대로 나가요. 커버업 하나만 걸치면 카페까지도 충분합니다.</p>
+  </div>
+  <div class="look">
+    <figure class="a"><img src="img/look-milkblue-tall.jpg" alt="밀크 블루 세트 전신"></figure>
+    <figure class="b"><img src="img/look-milkblue-front.jpg" alt="밀크 블루 정면"></figure>
+    <figure class="c"><img src="img/look-milkblue-back.jpg" alt="밀크 블루 뒷면"></figure>
+    <figure class="d"><img src="img/model-burgundy-full.jpg" alt="버건디 세트 착용"></figure>
+    <figure class="e"><img src="img/style-street.jpg" alt="밀크 블루 세트 데일리 스타일링"></figure>
+    <figure class="f"><img src="img/look-milkblue-side.jpg" alt="밀크 블루 측면"></figure>
+    <figure class="w"><img src="img/look-milkblue-lying.jpg" alt="밀크 블루 세트 화보"></figure>
+  </div>
+</section>
+
+<!-- ─────────── 7. IN THE GYM (UGC) ─────────── -->
+<section class="sec sec--mist">
+  <div class="head">
+    <p class="eyebrow">In the Gym</p>
+    <h2 class="en en--l">Worn by<br>people who lift.</h2>
+    <p class="body">스튜디오 조명이 아니라 헬스장 형광등 아래에서 찍은 사진이에요. 거울 앞에서 확인하고 싶은 등과 허리 라인이 그대로 나옵니다.</p>
+  </div>
+  <div class="ugc">
+    <figure><img src="img/ugc-locker.jpg" alt="라커룸 거울 셀피"></figure>
+    <figure><img src="img/ugc-gymfloor.jpg" alt="헬스장 플로어 착용컷"></figure>
+    <figure><img src="img/ugc-mirror.jpg" alt="샤워실 거울 셀피"></figure>
+    <figure><img src="img/style-back-selfie.jpg" alt="등 운동 후 뒷모습 셀피"></figure>
+  </div>
+</section>
+
+<!-- ─────────── 8. COMPLETE THE SET ─────────── -->
+<section class="sec">
+  <div class="set">
+    <figure class="set__img"><img src="img/look-milkblue-sit.jpg" alt="밀크 블루 홀터 탑과 3부 쇼츠 세트"></figure>
+    <div class="stack">
+      <p class="eyebrow">Complete the Set</p>
+      <h2 class="en en--l">Match<br>the shorts.</h2>
+      <p class="body">같은 쉐이프업 라인의 3부 쇼츠와 맞추면 상하의가 한 벌로 떨어져요. 탑의 밑단 밴드와 쇼츠 허리 밴드가 겹치는 높이까지 맞춰 설계했습니다.</p>
+      <dl class="price">
+        <div><dt>쉐이프업 홀터넥 탑</dt><dd>36,000원</dd></div>
+        <div><dt>쉐이프업 3부 쇼츠</dt><dd>32,000원</dd></div>
+        <div class="total"><dt>세트로 담으면</dt><dd><small>68,000원</small>63,000원</dd></div>
+      </dl>
+      <span class="save">세트 구매 시 5,000원 할인</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── 9. SIZE ─────────── -->
+<section class="sec">
+  <div class="head">
+    <p class="eyebrow">Size Guide</p>
+    <h2 class="en en--l">Measure<br>before you buy.</h2>
+    <p class="body">제품을 평평하게 펴고 단면으로 잰 값이에요. 단위는 cm이며, 측정 방식에 따라 1–3cm 차이가 있을 수 있습니다.</p>
+  </div>
+  <div class="size">
+    <svg viewBox="0 0 300 210" role="img" aria-label="사이즈 측정 위치: 1 총장, 2 가슴 단면, 3 밑단 단면">
+      <g fill="none" stroke="#D9D9DC" stroke-width="1"><path d="M160 41H254M216 175H254M86 177V196M214 177V196"/></g>
+      <path d="M114 104L142 44L149 46L132 108Z" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M186 104L158 44L151 46L168 108Z" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M142 44Q150 34 158 44" fill="none" stroke="#0A0A0A" stroke-width="1.4"/>
+      <path d="M78 128L86 175H214L222 128C218 110 202 102 186 104C170 106 158 111 150 116C142 111 130 106 114 104C98 102 82 110 78 128Z" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="1.4" stroke-linejoin="round"/>
+      <path d="M84.6 162H215.4" fill="none" stroke="#0A0A0A" stroke-width="1"/>
+      <g fill="none" stroke="#0A0A0A" stroke-width="1"><path d="M258 41V175M253 41H263M253 175H263M78 128H222M78 123V133M222 123V133M86 192H214M86 187V197M214 187V197"/></g>
+      <g font-family="Archivo,Arial,sans-serif" font-size="11" font-weight="700" text-anchor="middle">
+        <circle cx="258" cy="108" r="10" fill="#0A0A0A"/><text x="258" y="112" fill="#FFFFFF">1</text>
+        <circle cx="150" cy="128" r="10" fill="#0A0A0A"/><text x="150" y="132" fill="#FFFFFF">2</text>
+        <circle cx="150" cy="192" r="10" fill="#0A0A0A"/><text x="150" y="196" fill="#FFFFFF">3</text>
+      </g>
+    </svg>
+    <div class="tbl">
+      <table>
+        <thead><tr><th style="text-align:left">CM</th><th>S</th><th>M</th><th>L</th></tr></thead>
+        <tbody>
+          <tr><th><i>1</i>총장</th><td>41</td><td>44</td><td>45</td></tr>
+          <tr><th><i>2</i>가슴 단면</th><td>32</td><td>36</td><td>38</td></tr>
+          <tr><th><i>3</i>밑단 단면</th><td>29</td><td>32</td><td>36</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <dl class="fit">
+    <div><dt>Fit</dt><dd>몸에 붙는 컴프레션 핏이에요. 평소 사이즈를 고르시되, 어깨·등이 발달했거나 두 사이즈 사이라면 한 치수 위를 권해 드립니다.</dd></div>
+    <div><dt>Model</dt><dd><span class="todo">키 000cm · 상의 S 착용</span></dd></div>
+    <div><dt>Tip</dt><dd>평소 즐겨 입는 브라 탑을 평평하게 펴 두고 위 세 항목과 비교해 보시면 가장 정확해요.</dd></div>
+  </dl>
+</section>
+
+<!-- ─────────── 10. FAQ ─────────── -->
+<section class="sec sec--mist">
+  <div class="head">
+    <p class="eyebrow">FAQ</p>
+    <h2 class="en en--l">Before<br>you train.</h2>
+  </div>
+  <div class="faq">
+    <details open><summary>속옷을 따로 입어야 하나요?</summary><p>아니요. 스포츠 브라 두께의 성형 패드가 안쪽에 고정되어 있어 이 한 장만 입으시면 됩니다.</p></details>
+    <details><summary>고중량 웨이트 트레이닝에도 괜찮나요?</summary><p>네. 몸에 밀착되어 동작 중에 옷이 따로 놀지 않고, 넓은 밑단 밴드가 말려 올라가는 것을 잡아 줍니다. 등이 트여 있어 견갑을 모을 때도 원단이 걸리지 않아요.</p></details>
+    <details><summary>밀착 핏인데 답답하지 않나요?</summary><p>사방으로 늘어나는 고신축 원단이라 팔을 올리거나 상체를 숙일 때 함께 늘어납니다. 어깨와 등에는 원단이 지나가지 않아 걸리는 구간이 없어요.</p></details>
+    <details><summary>사이즈는 어떻게 고르면 되나요?</summary><p>평소 사이즈를 권해 드려요. 어깨·등이 발달한 체형이거나 두 사이즈 사이라면 한 치수 위를 선택해 주세요. 실측표의 가슴 단면을 기준으로 비교하시면 가장 정확합니다.</p></details>
+    <details><summary>비치지는 않나요?</summary><p>밀도 있는 원단에 내장 패드까지 더해져, 깊게 앉거나 팔을 뻗어도 비치지 않습니다.</p></details>
+    <details><summary>세탁은 어떻게 하나요?</summary><p>30℃ 이하 찬물에 단독 손세탁하고, 그늘에 뉘어서 말려 주세요. 건조기는 원단을 상하게 하니 피해 주시는 게 좋아요.</p></details>
+    <details><summary>쇼츠와 세트로도 살 수 있나요?</summary><p>네. 같은 쉐이프업 라인의 3부 쇼츠와 맞춘 세트 구성이 있고, 단품 두 개보다 5,000원 저렴합니다.</p></details>
+  </div>
+</section>
+
+<!-- ─────────── 11. CARE + INFO ─────────── -->
+<section class="sec">
+  <div class="head">
+    <p class="eyebrow">Care</p>
+    <h2 class="en en--m">Treat it like your gear.</h2>
+    <p class="body">조금만 신경 써 주시면 신축성과 컬러가 오래갑니다.</p>
+  </div>
+  <ul class="care">
+    <li><svg viewBox="0 0 40 40" fill="none" stroke="#0A0A0A" stroke-width="1.5"><path d="M5 12l4 20h22l4-20"/><path d="M5 12c3 3 6 3 10 0s7-3 10 0 7 3 10 0"/><path d="M17 20c1-2 3-2 4 0"/><text x="20" y="29" font-size="8" text-anchor="middle" fill="#0A0A0A" stroke="none" font-family="Archivo,Arial">30</text></svg>30℃ 이하<br>단독 손세탁</li>
+    <li><svg viewBox="0 0 40 40" fill="none" stroke="#0A0A0A" stroke-width="1.5"><path d="M20 6L35 32H5Z"/><path d="M8 8l24 26M32 8L8 34"/></svg>표백제·강력<br>효소 세제 금지</li>
+    <li><svg viewBox="0 0 40 40" fill="none" stroke="#0A0A0A" stroke-width="1.5"><rect x="6" y="6" width="28" height="28"/><circle cx="20" cy="20" r="9"/><path d="M6 6l28 28M34 6L6 34"/></svg>건조기<br>사용 금지</li>
+    <li><svg viewBox="0 0 40 40" fill="none" stroke="#0A0A0A" stroke-width="1.5"><path d="M6 30h28l-3-12H14c-4 0-7 4-8 12z"/><path d="M6 8l28 26M34 8L6 34"/></svg>다림질<br>금지</li>
+    <li><svg viewBox="0 0 40 40" fill="none" stroke="#0A0A0A" stroke-width="1.5"><rect x="6" y="6" width="28" height="28"/><path d="M12 21h16"/><path d="M6 14L14 6"/></svg>그늘에<br>뉘어서 건조</li>
+  </ul>
+  <dl class="info">
+    <div><dt>제품명</dt><dd>실버시드 우먼 쉐이프업 홀터넥 탑</dd></div>
+    <div><dt>소재</dt><dd>겉감 나일론 90%, 스판덱스 10% / 안감 폴리에스터 100%</dd></div>
+    <div><dt>색상</dt><dd>블랙, 차콜, 밀크 블루, 버건디</dd></div>
+    <div><dt>치수</dt><dd>S, M, L</dd></div>
+    <div><dt>제조국</dt><dd>중국</dd></div>
+    <div><dt>수입자</dt><dd>실버시드 (SILVER SEED)</dd></div>
+    <div><dt>품질보증기준</dt><dd>관련 법 및 소비자분쟁해결기준에 따름</dd></div>
+    <div><dt>A/S 책임자</dt><dd><span class="todo">고객센터 연락처 기입</span></dd></div>
+  </dl>
+</section>
+
+<!-- ─────────── 12. BRAND ─────────── -->
+<footer class="brand">
+  <div class="brand__img"><img src="img/brand-barbell.jpg" alt="바닥에 놓인 바벨"></div>
+  <div class="brand__in">
+    <p class="eyebrow">Brand Story</p>
+    <h2 class="en en--l">Break the form,<br>shine in silver.</h2>
+    <p>은은 처음부터 빛나지 않아요. 천 도 가까운 열을 지나 불순물이 걷혀 나간 뒤에야 비로소 제 빛을 냅니다.</p>
+    <p>우리가 말하는 아름다움도 같습니다. 부드러움이 아니라, 훈련으로 쌓아 올린 강도. 파스텔로 몸의 선만 드러내거나 큰 로고로 덮어 버리는 선택 사이, 그 빈자리에 실버시드가 있어요.</p>
+    <div class="brand__sign"><img src="img/silversyd-logo-white.svg" alt="SILVERSYD"><span>SUPPORT YOUR DREAM</span></div>
+  </div>
+</footer>
+
+</main>
+</body>
+</html>

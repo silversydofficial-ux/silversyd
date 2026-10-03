@@ -1,0 +1,184 @@
+<title>Shape Up Halter Detail Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Review sheet: one reading column; two phone frames side by side, then the diagnosis as a ledger. */
+:root{
+  --bg:#FAFAFA; --surface:#FFFFFF; --fg:#0B0B0C; --fg-2:#4B4B50; --fg-3:#8B8B92;
+  --rule:#E4E4E7; --mark:#FFF1A8; --mark-fg:#0B0B0C;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B0B0C; --surface:#151517; --fg:#F4F4F5; --fg-2:#B9B9BF; --fg-3:#7C7C84;
+  --rule:#2A2A2E; --mark:#5A4E12; --mark-fg:#FFF6CC; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B0B0C; --surface:#151517; --fg:#F4F4F5; --fg-2:#B9B9BF; --fg-3:#7C7C84;
+  --rule:#2A2A2E; --mark:#5A4E12; --mark-fg:#FFF6CC; color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.75;word-break:keep-all;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:48px 96px}
+h1,h2,h3,p,ul,ol{margin:0;padding:0}
+ul,ol{list-style:none}
+.mega{font-family:var(--display);font-stretch:62%;font-weight:900;text-transform:uppercase;line-height:.9;letter-spacing:-.005em;text-wrap:balance}
+.tag{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--fg-3)}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+
+header{display:grid;gap:16px;padding-bottom:40px;border-bottom:2px solid var(--fg)}
+header h1{font-size:clamp(48px,9vw,96px)}
+header p{color:var(--fg-2);max-width:40em}
+
+section{padding-top:64px;display:grid;gap:24px}
+section > h2{font-size:clamp(32px,5vw,48px)}
+.lead{color:var(--fg-2);max-width:42em}
+
+/* previews */
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+@media (max-width:760px){.duo{grid-template-columns:1fr}}
+.card{display:grid;gap:16px;align-content:start;min-width:0}
+.frame{width:100%;max-width:390px;height:720px;border:1px solid var(--rule);border-radius:28px;overflow:hidden;background:#fff;justify-self:center}
+.frame iframe{width:100%;height:100%;border:0;display:block}
+.card h3{font-family:var(--display);font-stretch:62%;font-size:30px;font-weight:900;text-transform:uppercase;line-height:1}
+.card p{color:var(--fg-2);font-size:14px}
+.card dl{display:grid;gap:0;border-top:1px solid var(--fg)}
+.card dl div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:13px}
+.card dt{color:var(--fg-3)}
+.card dd{margin:0;color:var(--fg-2)}
+.open{display:inline-flex;gap:8px;align-items:center;justify-self:start;font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border-bottom:1.5px solid var(--fg);padding-bottom:2px}
+
+/* ledger */
+.ledger{border-top:2px solid var(--fg)}
+.ledger li{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1fr);gap:20px;padding:18px 0;border-bottom:1px solid var(--rule);font-size:14px}
+.ledger .k{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);padding-top:3px}
+.ledger b{display:block;font-weight:700;margin-bottom:2px}
+.ledger .was{color:var(--fg-2)}
+.ledger .now{color:var(--fg)}
+.ledger .now::before{content:"→ ";font-weight:700}
+@media (max-width:760px){.ledger li{grid-template-columns:1fr;gap:6px}}
+
+.voice{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.voice{grid-template-columns:1fr}}
+.voice div{background:var(--surface);border:1px solid var(--rule);padding:20px;display:grid;gap:8px;align-content:start}
+.voice h3{font-family:var(--display);font-stretch:62%;font-size:22px;font-weight:900;text-transform:uppercase}
+.voice p{font-size:14px;color:var(--fg-2)}
+.voice q{display:block;font-size:14px;color:var(--fg);quotes:none;border-left:2px solid var(--fg);padding-left:10px}
+
+.check li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14px;color:var(--fg-2)}
+.check li::before{content:"";width:14px;height:14px;border:1.5px solid var(--fg);margin-top:5px}
+.check b{color:var(--fg)}
+mark{background:var(--mark);color:var(--mark-fg);padding:0 3px}
+
+.steps{counter-reset:s;display:grid;gap:0;border-top:2px solid var(--fg)}
+.steps li{counter-increment:s;display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:20px 0;border-bottom:1px solid var(--rule)}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--display);font-stretch:62%;font-size:34px;font-weight:900;line-height:1}
+.steps b{display:block;margin-bottom:4px}
+.steps p{color:var(--fg-2);font-size:14px}
+
+.verdict{background:var(--fg);color:var(--bg);padding:clamp(24px,4vw,40px);display:grid;gap:12px}
+.verdict .mega{font-size:clamp(30px,5vw,44px)}
+.verdict p{opacity:.85;max-width:44em}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="tag">SILVERSYD · Shape Up Halter Top · 상세페이지 시안 v1</p>
+  <h1 class="mega">Two editions.<br>One story.</h1>
+  <p>기획안 초안을 흑백 미니멀 톤으로 다시 짠 시안 두 개입니다. 문구와 사진은 초안 그대로 쓰되, 순서를 "문제 → 해결 → 증거 → 구매 결정" 흐름으로 다시 잡았어요. 아래 폰 화면은 스크롤해서 바로 볼 수 있습니다.</p>
+</header>
+
+<section>
+  <h2 class="mega">Preview</h2>
+  <div class="duo">
+    <article class="card">
+      <div class="frame"><iframe src="a-white-edition.html" title="A 화이트 에디션 미리보기" loading="lazy"></iframe></div>
+      <p class="tag">Option A</p>
+      <h3>White Edition</h3>
+      <p>흰 바탕에 넓게 벌린 영문 대문자, 여백이 많은 에디토리얼 톤. 조용하지만 고급스럽고, 브랜드 자사몰 기본 톤으로 오래 쓰기 좋아요.</p>
+      <dl>
+        <div><dt>톤</dt><dd>절제된 럭셔리, 매거진</dd></div>
+        <div><dt>문제 제기</dt><dd>세 가지 불편을 취소선으로 지우는 리스트</dd></div>
+        <div><dt>흐름</dt><dd>문제 → 해결 → 시그니처 → 원단 → 컬러 → 룩북 → 착용 후기 → 세트 → 사이즈</dd></div>
+        <div><dt>맞는 곳</dt><dd>카페24 자사몰, 브랜드 신뢰 쌓기</dd></div>
+      </dl>
+      <a class="open" href="a-white-edition.html" target="_blank" rel="noopener">전체 화면으로 열기 ↗</a>
+    </article>
+    <article class="card">
+      <div class="frame"><iframe src="b-black-edition.html" title="B 블랙 에디션 미리보기" loading="lazy"></iframe></div>
+      <p class="tag">Option B</p>
+      <h3>Black Edition</h3>
+      <p>검정과 흰색 블록이 섹션마다 뒤집히고, 압축된 굵은 영문이 화면을 꽉 채웁니다. 알파렛에 더 가까운 퍼포먼스 톤이에요.</p>
+      <dl>
+        <div><dt>톤</dt><dd>하드코어, 퍼포먼스</dd></div>
+        <div><dt>문제 제기</dt><dd>"Still adjusting?" 자가 체크리스트 4개</dd></div>
+        <div><dt>흐름</dt><dd>문제 → 해결 → <b>착용 후기를 바로 다음에</b> → 원단 → 시그니처 → 컬러 → 세트 → 사이즈</dd></div>
+        <div><dt>맞는 곳</dt><dd>광고 유입 랜딩, 스마트스토어 첫 판매</dd></div>
+      </dl>
+      <a class="open" href="b-black-edition.html" target="_blank" rel="noopener">전체 화면으로 열기 ↗</a>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2 class="mega">What changed</h2>
+  <p class="lead">초안은 정보는 충분했지만, 같은 이야기를 여러 번 하고 정작 "왜 이걸 사야 하는지"는 첫 화면에 없었어요. 바꾼 것들을 정리했습니다.</p>
+  <ol class="ledger">
+    <li><span class="k">첫 화면</span><span class="was"><b>제품명 + 설명 문단</b>스크롤을 멈출 이유가 없음. 모바일 첫 3초에 메시지가 안 보임.</span><span class="now"><b>영문 선언 + 한 줄 훅</b>"운동으로 만든 등, 이제 가리지 마세요." 핵심 스펙 4개를 바로 아래에.</span></li>
+    <li><span class="k">구조</span><span class="was"><b>같은 내용 3번 반복</b>No Adjusting / Key Features / How It Is Made가 모두 패드·백리스·핏을 설명.</span><span class="now"><b>문제 3개 ↔ 해결 3개 1:1 매칭</b>패드가 뜸 → 일체형 패드, 밑단 말림 → 2겹 밴드, 등이 가려짐 → 백리스.</span></li>
+    <li><span class="k">문제 제기</span><span class="was"><b>없음</b>기능만 나열하는 정보형 톤.</span><span class="now"><b>세트 사이 장면으로 공감</b>오버헤드 프레스, 데드리프트, 랫풀다운처럼 타깃이 실제 겪는 순간을 짚음.</span></li>
+    <li><span class="k">사회적 증거</span><span class="was"><b>페이지 후반 08번</b></span><span class="now"><b>B안은 해결 직후로 당김</b>"정말 그럴까?" 하는 순간에 실제 착용컷을 보여 줌.</span></li>
+    <li><span class="k">세트 할인</span><span class="was"><b>"Shop the set" 버튼만</b>5,000원 할인이 안 보임.</span><span class="now"><b>가격표로 보여 줌</b>36,000 + 32,000 = <s>68,000</s> → 63,000원. 객단가를 올리는 가장 쉬운 장치예요.</span></li>
+    <li><span class="k">사이즈 안내</span><span class="was"><b>세 곳의 말이 다름</b>Fit "큰 쪽", FAQ "평소 사이즈", Notice "실측보다 여유 있게".</span><span class="now"><b>한 문장으로 통일</b>"평소 사이즈, 어깨·등이 발달했거나 두 사이즈 사이면 한 치수 위."</span></li>
+    <li><span class="k">컬러</span><span class="was"><b>베이지·남색 회색이 섞임</b>#F2F1EF, #23242A 때문에 흑백 원칙이 흐려짐.</span><span class="now"><b>순수 흑백, 컬러는 옷에만</b>4가지 컬러가 페이지에서 가장 강하게 보이도록.</span></li>
+    <li><span class="k">법정 표기</span><span class="was"><b>일부 누락</b>안감 소재, 제조국, 수입자, 세탁기호가 없음.</span><span class="now"><b>세탁기호 5종 + 상품정보 고시표 추가</b>종이택 분쟁을 막는 데도 도움이 돼요.</span></li>
+    <li><span class="k">섹션 번호</span><span class="was"><b>01–12 번호</b>순서가 의미 없는 번호라 읽을 거리만 늘어남.</span><span class="now"><b>영문 아이브로 라벨로 교체</b>번호는 실제 순서가 있는 FIX 01–03에만.</span></li>
+    <li><span class="k">모바일</span><span class="was"><b>1200px 데스크톱 기준</b></span><span class="now"><b>모바일 우선, 최대 960px</b>390px 폭에서 가로 스크롤 없이 확인. 스크립트 없이 CSS만 사용(카페24 에디터 호환).</span></li>
+  </ol>
+</section>
+
+<section>
+  <h2 class="mega">Voice</h2>
+  <p class="lead">영문은 짧게 선언하고, 한국어가 이야기를 풀어 줍니다. 해요체와 습니다체는 역할을 나눠 섞었어요.</p>
+  <div class="voice">
+    <div><h3>English</h3><p>3–5단어 선언형. 대문자, 마침표로 끊기.</p><q>Three fixes. Zero adjusting.</q></div>
+    <div><h3>해요체</h3><p>공감, 문제 제기, 권유. 독자에게 말을 거는 문장.</p><q>세트 사이 1분, 숨을 고르는 대신 옷부터 매만지고 있진 않나요?</q></div>
+    <div><h3>습니다체</h3><p>구조, 소재, 수치. 믿음이 필요한 사실 문장.</p><q>밑단을 두 겹으로 접어 넓은 밴드로 마감했습니다.</q></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="mega">Recommendation</h2>
+  <div class="verdict">
+    <p class="mega">Go with B. Borrow A's calm.</p>
+    <p>지금 단계는 광고로 처음 들어온 사람을 설득해야 하는 시기예요. 젝시믹스·안다르 같은 파스텔 상세페이지 사이에서 바로 구분되는 건 B입니다. 브랜드가이드에서 아직 정하지 않은 "럭셔리 절제 vs 하드코어" 톤도 B 쪽으로 기울이는 걸 권해요. 다만 사이즈·FAQ·고시 정보 구간은 A처럼 흰 바탕에 여백 넓게 두면 읽기 편합니다(현재 B도 그 구간은 밝은 블록으로 처리).</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="mega">Before launch</h2>
+  <p class="lead">시안에 노란색으로 표시한 곳 포함, 올리기 전에 대표님 확인이 필요한 항목이에요.</p>
+  <ul class="check">
+    <li><span><b>모델 정보</b> · 키와 착용 사이즈가 아직 <mark>000cm</mark>로 비어 있어요.</span></li>
+    <li><span><b>A/S 책임자 연락처</b> · 상품정보 고시표에 <mark>기입 필요</mark>.</span></li>
+    <li><span><b>색상명 정리</b> · 판매명(블랙·차콜·밀크 블루·버건디)과 실제 발주 색(블랙·슬레이트 그레이·콘플라워 블루·겨울베리)이 달라요. 옵션명, 상세, 택 표기를 하나로 맞춰야 교환 문의가 줄어듭니다.</span></li>
+    <li><span><b>착용 후기 사진 출처</b> · 실제 구매 고객이 아니라면 "실제 구매 고객"이라고 쓰면 안 됩니다(표시광고법). 시안은 "헬스장에서 찍은 사진"으로만 표현했어요.</span></li>
+    <li><span><b>실측 재확인</b> · 총장이 S→M 3cm, M→L 1cm로 간격이 고르지 않아요. 오기인지 확인해 주세요.</span></li>
+    <li><span><b>단정 표현</b> · "비치지 않습니다", "밀려 올라가지 않아요"는 실제 착용 테스트 근거를 갖고 계시면 그대로, 아니라면 "걱정을 줄였어요" 정도로 낮추는 게 안전해요.</span></li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="mega">Better process</h2>
+  <p class="lead">다음 상세페이지(3부 쇼츠, 텐션핏 롱티)부터는 이 순서로 가면 수정이 훨씬 줄어요.</p>
+  <ol class="steps">
+    <li><div><b>카피덱 먼저, 디자인은 나중에</b><p>섹션별 영문 헤드라인 · 한국어 훅 · 근거 문장을 표 한 장에 먼저 확정합니다. 이번 초안처럼 같은 내용이 세 번 나오는 문제는 이 단계에서 걸러져요.</p></div></li>
+    <li><div><b>문제 정의는 리뷰 데이터로</b><p>경쟁사 홀터·브라탑 리뷰에서 불만 키워드(패드 뜸, 말림, 비침 등)를 모아 빈도순으로 문제 섹션을 짭니다. 감이 아니라 근거로 고르는 거예요.</p></div></li>
+    <li><div><b>샷리스트를 상세페이지에서 역산</b><p>"패드가 안 뜬다"는 사진 한 장보다 팔을 끝까지 올리는 3초 GIF가 강합니다. 섹션마다 필요한 증명 컷을 먼저 정하고 촬영(또는 힉스필드 생성)하세요.</p></div></li>
+    <li><div><b>채널별로 내보내기</b><p>스마트스토어는 HTML을 넣을 수 없어 이미지로 올려야 해요. 이 HTML을 860px 폭 이미지 조각으로 자동 저장하는 스크립트를 만들어 드릴 수 있고, 카페24에는 HTML 그대로 올려 텍스트 검색 노출을 챙기면 됩니다.</p></div></li>
+    <li><div><b>섹션을 모듈로</b><p>Hero · Problem · Fix · Fabric · Colour · Proof · Set · Size · FAQ · Care 블록을 템플릿으로 고정하면 다음 제품은 내용만 바꿔 끼우면 됩니다.</p></div></li>
+    <li><div><b>첫 화면은 광고로 먼저 테스트</b><p>"Built to show the work." 와 "Don't stay subtle." 두 훅을 메타 광고 소재로 붙여 클릭률을 비교하고, 이긴 쪽을 상세페이지 첫 화면으로 씁니다.</p></div></li>
+    <li><div><b>오픈 후 스크롤 데이터 보기</b><p>카페24에 무료 히트맵 도구(MS Clarity 등)를 붙이면 사람들이 어디서 이탈하는지 보여요. 이탈 구간부터 다음 수정 대상이 됩니다.</p></div></li>
+  </ol>
+</section>
+</div>
