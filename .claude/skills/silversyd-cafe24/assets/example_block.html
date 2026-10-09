@@ -1,0 +1,26 @@
+<!-- SILVERSYD 가격표기 간격 탭 정리 끝 -->
+<!-- SILVERSYD 배송교환 안내 링크 시작 -->
+<script>
+(function () {
+  /* 상세 구매영역의 「배송 · 교환 · 환불 안내」 줄.
+     1024px 이하에서는 하단이 탭 구조라 안내 영역(#prdInfo)이 숨겨져 있어
+     #guide 로 이동해도 아무 일이 없었다. 숨겨져 있으면 구매안내 탭을 먼저 열고 그 위치로 내려간다. */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest(".ssd-pdp__foldLink") : null;
+    if (!a) return;
+    var info = document.getElementById("prdInfo");
+    var bar = document.getElementById("tabProduct");
+    var tab = document.querySelector('#tabProduct a[href="#prdInfo"]');
+    if (!info) return;
+    e.preventDefault();
+    var mobile = bar && tab && getComputedStyle(bar).display !== "none";
+    if (mobile && getComputedStyle(info).display === "none") tab.click();
+    var target = mobile ? bar : (document.getElementById("guide") || info);
+    setTimeout(function () {
+      var y = target.getBoundingClientRect().top + window.pageYOffset - (mobile ? 56 : 0);
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }, 30);
+  });
+})();
+</script>
+<!-- SILVERSYD 배송교환 안내 링크 끝 -->
